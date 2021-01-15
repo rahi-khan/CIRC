@@ -1,24 +1,21 @@
 import React from "react";
-import Menubar from "./Menubar";
-import NavItems from "./NavItems";
+import Brand from "./HeaderComponents/Brand";
+import Menubar from "./HeaderComponents/Menubar";
+import NavItems from "./HeaderComponents/NavItems";
 
-const Header = () => {
+const Header = () => (
     //! Render Header UI
-    return (
-        <nav className={navStyles}>
-            <a href="/" id="logo" className="pl-6">
-                CIRC
-            </a>
-
-            <Menubar />
-
-            <NavItems />
-        </nav>
-    );
-};
+    <nav className={styles.nav}>
+        <Brand />
+        <Menubar />
+        <NavItems />
+    </nav>
+);
 
 //! Styles
-const navStyles =
-    "flex h-16 justify-between items-center bg-gradient-to-r from-purple-700 to-purple-600 text-white";
+const styles = {
+    nav:
+        "flex h-16 justify-between items-center bg-gradient-to-r from-purple-700 to-purple-600 text-white",
+};
 
 export default Header;
