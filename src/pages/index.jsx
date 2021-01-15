@@ -35,9 +35,7 @@ const Home = () => {
                     <h1 className={styles.heading}>Choose your colors</h1>
 
                     <a href="/" className={styles.link}>
-                        {/* <span className="mr-3">Explore</span> <FaArrowCircleRight /> */}
-                        Explore
-                        <FaArrowCircleRight />
+                        <span className="mr-3">Explore</span> <FaArrowCircleRight />
                     </a>
                 </div>
             </BackgroundImage>

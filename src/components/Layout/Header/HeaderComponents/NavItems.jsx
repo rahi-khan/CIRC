@@ -1,8 +1,8 @@
 import React from "react";
 
-const NavItems = () => (
+const NavItems = ({ listStyle }) => (
     //! Render Nav Lists
-    <div id="menu" className={styles.list}>
+    <div className={listStyle}>
         {navList.map((navItem, idx) => (
             <a href="/" className={styles.item} key={idx}>
                 {navItem}
@@ -16,7 +16,6 @@ const navList = ["Home", "About", "Contact"];
 
 //! Styles
 const styles = {
-    list: "hidden md:block",
     item: "p-4",
 };
 
