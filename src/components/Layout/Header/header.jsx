@@ -4,24 +4,15 @@ import Menubar from "./HeaderComponents/Menubar";
 import NavItems from "./HeaderComponents/NavItems";
 
 const Header = () => {
-    const [menuVisibility, setMenuVisibility] = useState("hidden");
+    const [isOpen, setisOpen] = useState(false);
 
     //! Set navlist to block while window resizing
     useEffect(() => {
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 768) {
-                if (menuVisibility !== "hidden") {
-                    setMenuVisibility("hidden");
-                }
-            }
-        });
+        const hideMenu = () => {};
 
+        window.addEventListener("resize", hideMenu);
         return () => {
-            window.removeEventListener("resize", () => {
-                if (window.innerWidth > 768) {
-                    setMenuVisibility("hidden");
-                }
-            });
+            window.removeEventListener("resize", hideMenu);
         };
     });
 
@@ -29,15 +20,10 @@ const Header = () => {
     const styles = {
         nav:
             "flex h-16 justify-between items-center bg-gradient-to-r from-purple-700 to-purple-600 text-white relative",
-        list: `${menuVisibility} md:block`,
     };
 
     //! Handle Click
-    const handleClick = () => {
-        menuVisibility === "hidden"
-            ? setMenuVisibility("flex flex-col text-center bg-purple-600 w-full absolute top-16")
-            : setMenuVisibility("hidden");
-    };
+    const handleClick = () => setisOpen(!isOpen);
 
     return (
         //?   Render Header UI
@@ -46,10 +32,10 @@ const Header = () => {
             <Brand />
 
             {/*//// Hamburger Menu */}
-            <Menubar handleClick={handleClick} />
+            <Menubar handleClick={handleClick} isOpen={isOpen} />
 
             {/*//// Nav Items */}
-            <NavItems listStyle={styles.list} />
+            <NavItems isOpen={isOpen} />
         </nav>
     );
 };
